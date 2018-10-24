@@ -1,0 +1,12 @@
+:host div {
+  background-color: bisque;
+}
+
+:host div h1 {
+  color: rgba(48, 47, 47, 0.87);
+}
+
+img {
+  width: 200px;
+  height: 350px;
+}

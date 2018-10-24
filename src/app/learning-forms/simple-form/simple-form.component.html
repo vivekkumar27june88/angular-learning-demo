@@ -1,0 +1,134 @@
+<h1 class="align-middle text-center mt-2 mt-b-2">Angular Form</h1>
+
+<div class="container mt-4">
+
+  <h3>Employee Form</h3>
+
+  <div class="row justify-content-md-center border border-primary shadow p-3 mb-5 bg-white rounded p-1">
+    <div class="col col-sm-6">
+      <form #simpleForm="ngForm"
+        class="needs-validation"
+        (submit)="submitForm(simpleForm)"
+        novalidate>
+
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="text"
+            class="form-control"
+            [class.is-invalid]="firstNameTemplateRef.invalid && firstNameTemplateRef.touched"
+            id="firstName"
+            name="lastName"
+            required
+            #firstNameTemplateRef="ngModel"
+            [ngModel]="model.firstName"
+            (ngModelChange)="firstNameModelChanged($event)">
+          <div *ngIf="firstNameTemplateRef.invalid && firstNameTemplateRef.touched"
+            class="alert alert-danger">First is required.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text"
+            class="form-control"
+            id="last-name"
+            name="last-name"
+            #lastNameTemplateRef
+            required
+            [(ngModel)]="model.lastName">
+        </div>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"
+              name="is-full-time"
+              [(ngModel)]="model.isFullTime">
+            Full Time Employee
+          </label>
+        </div>
+
+        <label>Payment Type </label>
+        <div class="radio">
+          <label>
+            <input type="radio"
+              name="paymentType"
+              value="w2"
+              checked
+              [(ngModel)]="model.paymentType">
+            w2
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio"
+              name="paymentType"
+              value="1099"
+              checked
+              [(ngModel)]="model.paymentType">
+            1099
+          </label>
+        </div>
+
+        <!-- Select Element - Language -->
+        <div class="form-group">
+          <label for="primaryLanguage">Primary Language</label>
+          <select name="primaryLanguage"
+            #primaryLanguageTemRef
+            (blur)="validatePrimaryLanguage(primaryLanguageTemRef.value)"
+            (change)="validatePrimaryLanguage(primaryLanguageTemRef.value)"
+            [class.is-invalid]="primaryLanguageIsInvalid"
+            id="language"
+            class="form-control"
+            [(ngModel)]="model.primaryLanguage"
+            required>
+            <option value="default">Select a Language...</option>
+            <option value=""
+              *ngFor="let lang of languages">
+              {{lang}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="">Date Hired</label>
+          <input type="date"
+            class="form-control">
+        </div>
+
+        <button type="submit"
+          [disabled]="simpleForm.invalid || primaryLanguageIsInvalid"
+          class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<div class="container text-monospace">
+  <div class="row">
+    <div class="col-4 border border-primary align-middle">pristine</div>
+    <div class="col-8 text-left border border-success">{{simpleForm.pristine | json}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-primary">model</div>
+    <div class="col-8 text-left border border-success">{{model | json}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-primary">#simpleForm</div>
+    <div class="col-8 text-left border border-success">{{simpleForm.value | json}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-primary">#firstNameTemplateRef="ngModel"</div>
+    <div class="col-8 text-left border border-success">{{ firstNameTemplateRef.value | json }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-primary">#lastNameTemplateRef</div>
+    <div class="col-8 text-left border border-success">
+      <pre>{{ lastNameTemplateRef | json }}</pre>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+.button-div {
+  border: 2px solid cadetblue;
+  border-radius: 5px;
+  width: 200px;
+  padding: 10px;
+  margin: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  user-select: none;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.button-div:hover {
+  background-color: aliceblue;
+  font-weight: bold;
+}
+
+.button-div:active {
+  border-color: aqua;
+}
+
+.vcr1,
+.vcr2 {
+  border: 2px solid cadetblue;
+  width: 60%;
+  margin-left: 40px;
+}
+
+article {
+  max-width: 400px;
+  margin: 10px auto 20px 40px;
+  display: inline-block;
+}
+
+article.a1 {
+  border: 1px solid tomato;
+}
+
+article.a2 {
+  border: 1px solid cornflowerblue;
+}
+
+article header {
+  font-weight: 600;
+  padding-bottom: 5px;
+  text-align: center;
+  margin: 10px auto 10px 5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid grey;
+}
+
+article p {
+  margin: 5px auto 5px 5px;
+}
+
+.vcr-heading {
+  margin: 10px auto 5px 40px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}

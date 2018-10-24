@@ -1,0 +1,86 @@
+- Forms:
+    - Decrative Forms:
+      - ngModel (Directive)
+      - ngModelChange (Directive)
+      - ngFormControl (Directive)
+      - ngFormGroup (Directive)
+      - ngFormOptions | example: [ngFormOptions]="{updateOn: 'blur | submit'}" 
+    - Reactive Forms:
+      - formControlName (Directive)
+      - formGroupName (Directive)
+      - formArrayName (Directive)
+      - formControl (Directive)
+      - formGroup ((Directive))
+      - AbstractControl
+      - FormControl:
+      - FormGroup:
+      - FormBuilder
+      - Validators:
+        - Standard Validators
+        - Custom Validators
+        - Parmaterized Custom Validators
+        - Cross Field Validators
+        - ng-touched [touched] | ng-untouched [untouched], ng-dirty [dirty] | ng-pristine [pristine], ng-valid [valid] | ng-invalid [invalid] 
+      - FormArray
+
+- DOM
+  - templateRef
+  - View
+  - Conent
+  - @ViewChild()
+  - @ContentChild()
+  - @ViewChildren()
+  - @ContentChildren()
+  - configurations to @View* and @Content* {read: TemplateRef, ViewContainerRef, ElementRef, Type, descendents: boolean}
+  - Selectors
+  - <ng-content>
+  - <ng-template>
+  - <ng-container>
+  - *ngTemplateOutlet
+  - ElementRef
+  - ElementRef via Dependency injection | constructor(private elementRef: ElementRef)
+  - ViewContainer
+  - ViewContainerRef
+  - QueryList
+  - Subscribing changes to changes on querylist
+  
+
+-  RxJx:
+    - debounceTime:
+        Ignores event untill specified amount has passed without another event.
+    - throttleTime:
+        Emits a value and then ignore subsequent values for a specific amount of time.
+    - distinctUntilChanged:
+        Supress duplicate consecutives items.
+    - concat
+    - merge
+    - mergeMap
+    - forkMap
+    - flatMap
+    - switchMap
+    - exhaustMap
+    - filter
+    - catchError
+    - throwError
+    - tap
+    - delay
+    - takeUntil
+    - take
+    - concat
+    - join
+    - fromEvent
+    - fromPromise
+    - fromArray
+    - from
+    - interval
+    - share
+    - publish
+    - filter
+    - Tesging
+    - scan
+    - takeWhile
+    - delay
+    - Observable.defer
+    - Observable.onErrorResumeNext
+
+

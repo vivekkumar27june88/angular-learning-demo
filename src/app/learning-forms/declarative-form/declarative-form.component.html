@@ -1,0 +1,118 @@
+<div class="card container mt-5 mb-5 pt-1 pb-3 pl-5 pr-5">
+  <h4>Registration Form (Declarative)</h4>
+  <br>
+  <form novalidate
+    #f="ngForm">
+
+    <div class="form-group row">
+      <label for="first"
+        class="col-sm-4 col-form-label">First name</label>
+      <input [ngModel]="first"
+        name="first"
+        type="text"
+        id="first"
+        class="form-control col-sm-8"
+        placeholder="First name">
+    </div>
+
+    <div class="form-group row">
+      <label for="last"
+        class="col-sm-4 col-form-label">Last name</label>
+      <input [ngModel]="last"
+        type="text"
+        class="form-control col-sm-8"
+        name="last"
+        id="last"
+        placeholder="Last name">
+    </div>
+
+    <br>
+    <div ngModelGroup="account"
+      appPasswordMatcher
+      #account="ngModelGroup">
+      <h6>Account</h6>
+
+      <div class="form-group row">
+        <label for="username"
+          class="col-sm-4 col-form-label">Username</label>
+        <input [ngModel]
+          name="username"
+          id="username"
+          type="text"
+          placeholder="User name"
+          class="form-control-label col-sm-8">
+      </div>
+
+      <div class="form-group row">
+        <label for="password"
+          class="col-sm-4 col-form-label">Password</label>
+        <input [ngModel]
+          type="password"
+          name="password"
+          placeholder="Password"
+          id="password"
+          class="form-control-label col-sm-8"
+          required>
+      </div>
+
+      <div class="form-group row">
+        <label for="password"
+          class="col-sm-4 col-form-label">Confirm Password</label>
+        <input ngModel
+          type="confirm"
+          name="confirm"
+          placeholder="Confirm Password"
+          id="confirm"
+          class="form-control-label col-sm-8"
+          required
+          #password="ngModel">
+      </div>
+    </div>
+
+    <br>
+    <h6>Would you like to receive the newsletter?</h6>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input ngModel
+        type="radio"
+        id="newsletter1"
+        vlaue="yes"
+        name="newsletter"
+        class="custom-control-input">
+      <label class="custom-control-label"
+        for="newsletter1">Yes</label>
+    </div>
+
+    <div class="custom-control custom-radio custom-control-inline">
+      <input ngModel
+        type="radio"
+        id="newsletter2"
+        value="no"
+        name="newsletter"
+        class="custom-control-input">
+      <label class="custom-control-label"
+        for="newsletter2">No</label>
+    </div>
+
+    <br><br>
+
+    <button type="submit"
+      class="btn btn-primary">Submit</button>
+
+  </form>
+</div>
+
+<div class="card">
+  Account Status: {{ account.control?.errors | json }}
+</div>
+
+<div class="card">
+  {{ f.value | json }}
+</div>
+
+<div class="card">
+  Form Status: {{ f.control.status }}
+</div>
+
+<div class="card">
+  Password Status: {{ password.control.status }}
+</div>

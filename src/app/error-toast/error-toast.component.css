@@ -1,0 +1,19 @@
+div.container {
+  max-width: 400px;
+  min-height: 50px;
+  border: 0.5px red solid;
+  border-left: 4px red solid;
+}
+
+div i {
+  font-size: 40px;
+  color: red;
+  margin: 20px 10px;
+  display: block;
+}
+
+.msg {
+  margin-left: 10px;
+  font-size: 20px;
+  color: red;
+}

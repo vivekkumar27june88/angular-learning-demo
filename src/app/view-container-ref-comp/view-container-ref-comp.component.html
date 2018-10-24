@@ -1,0 +1,27 @@
+<br><br><br>
+<div class="button-div" (click)="addTemplateA()">Add Template A</div>
+<div class="button-div" (click)="addTemplateB()">Add Template B</div>
+<div class="button-div" (click)="clearVCR1()">Clear VCR1</div>
+<div class="button-div" (click)="clearVCR2()">Clear VCR2</div>
+
+<h3 class="vcr-heading">View Container Ref 1</h3>
+<div #vcr1 class="vcr1"></div>
+
+<br><br><br>
+
+<h3 class="vcr-heading">View Container Ref 2</h3>
+<div #vcr2 class="vcr2"></div>
+
+<ng-template #templateA>
+  <article class="a1">
+    <header>This is header of template A</header>
+    <p>This is conentent of tempage A. This is quite small and will be update very soon.</p>
+  </article>
+</ng-template>
+
+<ng-template #templateB>
+  <article class="a2">
+    <header>This is header of template B</header>
+    <p>This is conentent of tempage B. This is quite small and will be update very soon.</p>
+  </article>
+</ng-template>

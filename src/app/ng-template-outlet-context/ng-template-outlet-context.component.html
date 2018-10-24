@@ -1,0 +1,71 @@
+<div class="card mt-5 w-75 mx-auto">
+  <div class="container">
+    <h4 class="pt-3">Template Outlet (Without Context)</h4>
+    <ng-container *ngTemplateOutlet="withoutContext"></ng-container>
+  </div>
+</div>
+
+<ng-template #withoutContext>
+  <p class="border border-primary p-5 m-5">
+    This is simple template and it is not accepting any context.
+  </p>
+</ng-template>
+
+
+<div class="card mt-5 w-75 mx-auto">
+  <div class="container">
+    <h4 class="pt-3">Template Outlet (With Fixed Context)</h4>
+    <ng-container *ngTemplateOutlet="withFixedContext; context:{
+      firstName: 'Vivek',
+      lastName: 'Kumar',
+      company: 'Schlumber'
+    }"></ng-container>
+  </div>
+</div>
+
+<ng-template #withFixedContext
+  let-firstName='firstName'
+  let-lastName='lastName'
+  let-company="company">
+  <div class="border border-danger p-2 m-2">
+    This is simple template and which is accepting fixed context.
+    <div class="border border-success m-2 p-2">
+      <div class="row">
+        <div class="col-sm-6">Firstname</div>
+        <div class="col-sm-6">{{firstName}}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">Lastname</div>
+        <div class="col-sm-6">{{lastName}}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">Company</div>
+        <div class="col-sm-6">{{company}}</div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="card mt-5 mx-auto w-75">
+  <div class="container">
+    <h4 class="pt-3">Template Outlet (With Dynamic Context)</h4>
+    <ng-container *ngTemplateOutlet="withDynamicContext; context: getDynamicContext(val)"></ng-container>
+  </div>
+</div>
+
+<ng-template #withDynamicContext
+  let-message="message" let-name="name">
+  <div class="border border-danger p-2 m-2">
+    This is simple template and which is accepting fixed context.
+    <div class="border border-success m-2 p-2">
+      <div class="row">
+        <div class="col-sm-3">Message</div>
+        <div class="col-sm-6">{{message}}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">Name</div>
+        <div class="col-sm-6">{{name}}</div>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,17 @@
+<ng-content>
+</ng-content>
+<br>
+<br>
+<br>
+<div>
+  <h1>This is Parent component -- start</h1>
+  <ng-container *ngTemplateOutlet='templatePlaceholder'></ng-container>
+  <button (click)="changePlaceholderItem()">Change Placeholde Item</button>
+  <h1>This is Parent component -- end</h1>
+</div>
+
+<ng-template #templateInsideParent>
+  <h3>Template Content inside of parent -- START</h3>
+  <img src="https://images.unsplash.com/photo-1475084050567-5830aa8e79e9?ixlib=rb-0.3.5&s=2ab1b890c10ceb8a9949a9a85718bb00&auto=format&fit=crop&w=2250&q=80" />
+  <h3>Template Content inside of parent -- END</h3>
+</ng-template>

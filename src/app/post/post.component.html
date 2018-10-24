@@ -1,0 +1,4 @@
+<div (click)="togglePost($event)">
+  <h3>{{title}}</h3>
+  <ng-content *ngIf="isVisible"></ng-content>
+</div>
