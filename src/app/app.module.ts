@@ -41,10 +41,19 @@ const ROUTES: Routes = [
     loadChildren: './state-management/state-management.module#StateManagementModule'
   },
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'state-management'
-  }
+    path: 'home',
+    component: NgTemplateOutletContextComponent
+  },
+  {
+    path: 'form',
+    component: DemoDynamicCompComponent
+  },
+  // ,
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   redirectTo: 'state-management'
+  // }
 ];
 
 @NgModule({
