@@ -25,6 +25,10 @@ const jQuery = window['$'];
 
 const ROUTES: Routes = [
   {
+    path: 'zone',
+    loadChildren: './modules/zone-test/zone-test.module#ZoneTestModule'
+  },
+  {
     path: 'learning-forms',
     loadChildren: './learning-forms/learning-forms.module#LearningFormsModule'
   },
@@ -93,4 +97,4 @@ const ROUTES: Routes = [
   entryComponents: [SuccessToastComponent, WarningToastComponent, ErrorToastComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
