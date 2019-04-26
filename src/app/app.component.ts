@@ -54,7 +54,8 @@ export class AppComponent implements OnInit {
     // this.testConcat();
     // this.testBehaviorSubject();
     // this.testQueueScheduler();
-    this.testObserveOnWithScheduler();
+    // this.testObserveOnWithScheduler();
+    this.testCreateCustomOperator();
   }
 
   ngOnInit() {
@@ -150,22 +151,18 @@ export class AppComponent implements OnInit {
     // this.getPosts().subscribe(posts => {
     //   console.log({ posts });
     // });
-
     // this.getComments().subscribe(comments => {
     //   console.log({ comments });
     // });
-
     // this.getPosts().subscribe(posts => {
     //   console.log({ posts });
-
     //   this.getComments().subscribe(comments => {
     //     console.log({ comments });
     //   });
     // });
-
-    of()
-      .pipe(merge(this.getPosts(), this.getComments()))
-      .subscribe(data => console.log(data));
+    // of()
+    //   .pipe(merge(this.getPosts(), this.getComments()))
+    //   .subscribe(data => console.log(data));
   }
 
   testRetryOperator() {
@@ -348,4 +345,23 @@ export class AppComponent implements OnInit {
   }
 
   //#endregion
+
+  testCreateCustomOperator() {
+    from([1, 2, 3])
+      .pipe(this.customDoubler())
+      .subscribe(d => console.log(d), e => console.error(e));
+  }
+
+  customDoubler() {
+    return source$ => {
+      return new Observable(subscriber => {
+        return source$.subscribe(
+          data => {
+            subscriber.next(data * 2);
+          },
+          error => throwError('error in custom Doubler operator')
+        );
+      });
+    };
+  }
 }
