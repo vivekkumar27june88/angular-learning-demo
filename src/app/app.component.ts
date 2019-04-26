@@ -9,13 +9,16 @@ import {
   throwError,
   Subject,
   interval,
-  BehaviorSubject
+  BehaviorSubject,
+  queueScheduler,
+  asyncScheduler,
+  asapScheduler,
+  merge
 } from 'rxjs';
 import {
   map,
   filter,
   flatMap,
-  merge,
   retry,
   retryWhen,
   scan,
@@ -23,7 +26,9 @@ import {
   delay,
   catchError,
   take,
-  concatMap
+  concatMap,
+  tap,
+  observeOn
 } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { TestService } from './services/test.service';
@@ -47,7 +52,9 @@ export class AppComponent implements OnInit {
     // this.testRetryWhenOperator();
     // this.testCatchError();
     // this.testConcat();
-    this.testBehaviorSubject();
+    // this.testBehaviorSubject();
+    // this.testQueueScheduler();
+    this.testObserveOnWithScheduler();
   }
 
   ngOnInit() {
@@ -307,14 +314,38 @@ export class AppComponent implements OnInit {
   //#endregion
 
   //#region Scheduler in RxJS
-  testQueueScheduler() {}
+  testQueueScheduler() {
+    console.log('testQueueScheduler >>> START');
 
-  testAsyncScheduler() {}
+    const queueSch$ = of('Queue Scheduler', queueScheduler);
+    const asyncSch$ = of('Async Scheduler', asyncScheduler);
+    const asapSch$ = of('ASAP Scheduler', asapScheduler);
 
-  testAsapScheduler() {}
+    merge(asapSch$, asyncSch$, queueSch$).subscribe(d => console.log(d));
 
-  testAnimationFrameScheduler() {}
+    console.log('testQueueScheduler >>> END');
+  }
 
-  testTestScheduler() {}
+  testObserveOnWithScheduler() {
+    console.log('testObserveOnWithScheduler >>> START');
+
+    from([1, 2, 3], queueScheduler)
+      .pipe(
+        tap(d => console.log(`WITHOUT OBSERVE-ON >>> TAP >>> ONE >>> ${d}`)),
+        tap(d => console.log(`WITHOUT OBSERVE-ON >>> TAP >>> TWO >>> ${d * 2}`))
+      )
+      .subscribe();
+
+    from([1, 2, 3], queueScheduler)
+      .pipe(
+        tap(d => console.log(`WITH OBSERVE-ON >>> TAP >>> ONE >>> ${d}`)),
+        observeOn(asyncScheduler),
+        tap(d => console.log(`WITH OBSERVE-ON >>> TAP >>> TWO >>> ${d * 2}`))
+      )
+      .subscribe();
+
+    console.log('testObserveOnWithScheduler >>> END');
+  }
+
   //#endregion
 }
